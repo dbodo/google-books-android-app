@@ -7,5 +7,6 @@ import retrofit2.http.GET;
 
 public interface GoogleBooksAPI {
     @GET("books/v1/volumes/?q=harry%20potter")
-    Call<ItemsResponse> getVolumeInfo();
+    Call<ItemsResponse> getItems();
+   
 }

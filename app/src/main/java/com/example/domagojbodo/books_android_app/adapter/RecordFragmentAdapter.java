@@ -3,6 +3,7 @@ package com.example.domagojbodo.books_android_app.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.domagojbodo.books_android_app.fragments.BookshelfFragment;
 import com.example.domagojbodo.books_android_app.fragments.HomeFragment;
@@ -10,7 +11,7 @@ import com.example.domagojbodo.books_android_app.listeners.HomeListener;
 import com.example.domagojbodo.books_android_app.listeners.BookshelfListener;
 
 
-public class RecordFragmentAdapter extends FragmentPagerAdapter implements HomeListener, BookshelfListener{
+public class RecordFragmentAdapter extends FragmentStatePagerAdapter implements HomeListener, BookshelfListener{
     public RecordFragmentAdapter(FragmentManager fm) {
         super(fm);
     }
