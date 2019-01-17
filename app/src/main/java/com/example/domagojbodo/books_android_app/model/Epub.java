@@ -5,6 +5,10 @@ public class Epub {
 
     private Boolean isAvailable;
 
+    public Epub(Boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
     public Boolean getIsAvailable() {
         return isAvailable;
     }

@@ -5,6 +5,12 @@ public class SaleInfo {
     private String saleability;
     private Boolean isEbook;
 
+    public SaleInfo(String country, String saleability, Boolean isEbook) {
+        this.country = country;
+        this.saleability = saleability;
+        this.isEbook = isEbook;
+    }
+
     public String getCountry() {
         return country;
     }

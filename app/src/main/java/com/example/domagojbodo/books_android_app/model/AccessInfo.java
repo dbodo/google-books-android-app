@@ -3,7 +3,6 @@ package com.example.domagojbodo.books_android_app.model;
 public class AccessInfo {
 
     private String country;
-    private String viewability;
     private Boolean embeddable;
     private Boolean publicDomain;
     private String textToSpeechPermission;
@@ -13,20 +12,24 @@ public class AccessInfo {
     private String accessViewStatus;
     private Boolean quoteSharingAllowed;
 
+    public AccessInfo(String country, Boolean embeddable, Boolean publicDomain, String textToSpeechPermission, Epub epub, Pdf pdf, String webReaderLink, String accessViewStatus, Boolean quoteSharingAllowed) {
+        this.country = country;
+        this.embeddable = embeddable;
+        this.publicDomain = publicDomain;
+        this.textToSpeechPermission = textToSpeechPermission;
+        this.epub = epub;
+        this.pdf = pdf;
+        this.webReaderLink = webReaderLink;
+        this.accessViewStatus = accessViewStatus;
+        this.quoteSharingAllowed = quoteSharingAllowed;
+    }
+
     public String getCountry() {
         return country;
     }
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public String getViewability() {
-        return viewability;
-    }
-
-    public void setViewability(String viewability) {
-        this.viewability = viewability;
     }
 
     public Boolean getEmbeddable() {

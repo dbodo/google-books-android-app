@@ -7,6 +7,10 @@ public class Pdf {
         return isAvailable;
     }
 
+    public Pdf(Boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
     public void setIsAvailable(Boolean isAvailable) {
         this.isAvailable = isAvailable;
     }

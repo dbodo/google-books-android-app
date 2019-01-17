@@ -11,11 +11,8 @@ public class VolumeInfo {
     private List<String> authors = null;
     private String publisher;
     private String publishedDate;
-    private List<IndustryIdentifier> industryIdentifiers = null;
-    private ReadingModes readingModes;
     private Integer pageCount;
     private Integer printedPageCount;
-    private Dimensions dimensions;
     private String printType;
     private List<String> categories = null;
     private String contentVersion;
@@ -25,17 +22,14 @@ public class VolumeInfo {
     private String infoLink;
     private String canonicalVolumeLink;
 
-    public VolumeInfo(String title, String subtitle, List<String> authors, String publisher, String publishedDate, List<IndustryIdentifier> industryIdentifiers, ReadingModes readingModes, Integer pageCount, Integer printedPageCount, Dimensions dimensions, String printType, List<String> categories, String contentVersion, ImageLinks imageLinks, String language, String previewLink, String infoLink, String canonicalVolumeLink) {
+    public VolumeInfo(String title, String subtitle, List<String> authors, String publisher, String publishedDate, Integer pageCount, Integer printedPageCount, String printType, List<String> categories, String contentVersion, ImageLinks imageLinks, String language, String previewLink, String infoLink, String canonicalVolumeLink) {
         this.title = title;
         this.subtitle = subtitle;
         this.authors = authors;
         this.publisher = publisher;
         this.publishedDate = publishedDate;
-        this.industryIdentifiers = industryIdentifiers;
-        this.readingModes = readingModes;
         this.pageCount = pageCount;
         this.printedPageCount = printedPageCount;
-        this.dimensions = dimensions;
         this.printType = printType;
         this.categories = categories;
         this.contentVersion = contentVersion;
@@ -86,22 +80,6 @@ public class VolumeInfo {
         this.publishedDate = publishedDate;
     }
 
-    public List<IndustryIdentifier> getIndustryIdentifiers() {
-        return industryIdentifiers;
-    }
-
-    public void setIndustryIdentifiers(List<IndustryIdentifier> industryIdentifiers) {
-        this.industryIdentifiers = industryIdentifiers;
-    }
-
-    public ReadingModes getReadingModes() {
-        return readingModes;
-    }
-
-    public void setReadingModes(ReadingModes readingModes) {
-        this.readingModes = readingModes;
-    }
-
     public Integer getPageCount() {
         return pageCount;
     }
@@ -116,14 +94,6 @@ public class VolumeInfo {
 
     public void setPrintedPageCount(Integer printedPageCount) {
         this.printedPageCount = printedPageCount;
-    }
-
-    public Dimensions getDimensions() {
-        return dimensions;
-    }
-
-    public void setDimensions(Dimensions dimensions) {
-        this.dimensions = dimensions;
     }
 
     public String getPrintType() {
