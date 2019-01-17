@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.domagojbodo.books_android_app.R;
 import com.example.domagojbodo.books_android_app.listeners.HomeListener;
 import com.example.domagojbodo.books_android_app.model.ItemsResponse;
+import com.example.domagojbodo.books_android_app.model.VolumeInfo;
 import com.example.domagojbodo.books_android_app.network.RetrofitManager;
 
 import retrofit2.Call;

@@ -80,6 +80,6 @@ public class BookItems {
     @NonNull
     @Override
     public String toString(){
-        return "ID knjige: " + id + "\n";
+        return "\n" + getVolumeInfo();
     }
 }

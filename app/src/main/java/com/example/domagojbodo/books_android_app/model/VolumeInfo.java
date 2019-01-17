@@ -163,6 +163,6 @@ public class VolumeInfo {
     @NonNull
     @Override
     public String toString(){
-        return "naslov knjige: " + title + "\n";
+        return "naslov knjige: " + title + "\n" + "- author:" + authors;
     }
 }
