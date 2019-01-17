@@ -1,5 +1,7 @@
 package com.example.domagojbodo.books_android_app.model;
 
+import android.support.annotation.NonNull;
+
 public class BookItems {
     private String kind;
     private String id;
@@ -9,6 +11,15 @@ public class BookItems {
     private SaleInfo saleInfo;
     private AccessInfo accessInfo;
 
+    public BookItems(String kind, String id, String etag, String selfLink, VolumeInfo volumeInfo, SaleInfo saleInfo, AccessInfo accessInfo) {
+        this.kind = kind;
+        this.id = id;
+        this.etag = etag;
+        this.selfLink = selfLink;
+        this.volumeInfo = volumeInfo;
+        this.saleInfo = saleInfo;
+        this.accessInfo = accessInfo;
+    }
 
     public String getKind() {
         return kind;
@@ -66,5 +77,9 @@ public class BookItems {
         this.accessInfo = accessInfo;
     }
 
-
+    @NonNull
+    @Override
+    public String toString(){
+        return "ID knjige: " + id + "\n";
+    }
 }

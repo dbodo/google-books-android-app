@@ -1,5 +1,7 @@
 package com.example.domagojbodo.books_android_app.model;
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
 public class VolumeInfo {
@@ -22,6 +24,27 @@ public class VolumeInfo {
     private String previewLink;
     private String infoLink;
     private String canonicalVolumeLink;
+
+    public VolumeInfo(String title, String subtitle, List<String> authors, String publisher, String publishedDate, List<IndustryIdentifier> industryIdentifiers, ReadingModes readingModes, Integer pageCount, Integer printedPageCount, Dimensions dimensions, String printType, List<String> categories, String contentVersion, ImageLinks imageLinks, String language, String previewLink, String infoLink, String canonicalVolumeLink) {
+        this.title = title;
+        this.subtitle = subtitle;
+        this.authors = authors;
+        this.publisher = publisher;
+        this.publishedDate = publishedDate;
+        this.industryIdentifiers = industryIdentifiers;
+        this.readingModes = readingModes;
+        this.pageCount = pageCount;
+        this.printedPageCount = printedPageCount;
+        this.dimensions = dimensions;
+        this.printType = printType;
+        this.categories = categories;
+        this.contentVersion = contentVersion;
+        this.imageLinks = imageLinks;
+        this.language = language;
+        this.previewLink = previewLink;
+        this.infoLink = infoLink;
+        this.canonicalVolumeLink = canonicalVolumeLink;
+    }
 
     public String getTitle() {
         return title;
@@ -165,5 +188,11 @@ public class VolumeInfo {
 
     public void setCanonicalVolumeLink(String canonicalVolumeLink) {
         this.canonicalVolumeLink = canonicalVolumeLink;
+    }
+
+    @NonNull
+    @Override
+    public String toString(){
+        return "naslov knjige: " + title + "\n";
     }
 }
