@@ -14,9 +14,7 @@ import com.example.domagojbodo.books_android_app.listeners.BookshelfListener;
 
 public class BookshelfFragment extends Fragment implements AdapterView.OnItemSelectedListener{
     public static BookshelfFragment newInstance() {
-
         Bundle args = new Bundle();
-
         BookshelfFragment fragment = new BookshelfFragment();
         fragment.setArguments(args);
         return fragment;

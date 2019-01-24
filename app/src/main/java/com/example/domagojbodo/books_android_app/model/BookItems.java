@@ -8,17 +8,13 @@ public class BookItems {
     private String etag;
     private String selfLink;
     private VolumeInfo volumeInfo;
-    private SaleInfo saleInfo;
-    private AccessInfo accessInfo;
 
-    public BookItems(String kind, String id, String etag, String selfLink, VolumeInfo volumeInfo, SaleInfo saleInfo, AccessInfo accessInfo) {
+    public BookItems(String kind, String id, String etag, String selfLink, VolumeInfo volumeInfo) {
         this.kind = kind;
         this.id = id;
         this.etag = etag;
         this.selfLink = selfLink;
         this.volumeInfo = volumeInfo;
-        this.saleInfo = saleInfo;
-        this.accessInfo = accessInfo;
     }
 
     public String getKind() {
@@ -59,22 +55,6 @@ public class BookItems {
 
     public void setVolumeInfo(VolumeInfo volumeInfo) {
         this.volumeInfo = volumeInfo;
-    }
-
-    public SaleInfo getSaleInfo() {
-        return saleInfo;
-    }
-
-    public void setSaleInfo(SaleInfo saleInfo) {
-        this.saleInfo = saleInfo;
-    }
-
-    public AccessInfo getAccessInfo() {
-        return accessInfo;
-    }
-
-    public void setAccessInfo(AccessInfo accessInfo) {
-        this.accessInfo = accessInfo;
     }
 
     @NonNull

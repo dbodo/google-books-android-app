@@ -4,14 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.example.domagojbodo.books_android_app.adapter.RecordFragmentAdapter;
+
 import com.example.domagojbodo.books_android_app.fragments.BookshelfFragment;
 import com.example.domagojbodo.books_android_app.fragments.HomeFragment;
 
@@ -32,17 +31,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         loadFragment(new HomeFragment());
     }
 
-    private boolean loadFragment(Fragment fragment){
-        if(fragment != null){
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container,fragment)
-                    .commit();
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
@@ -58,5 +46,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
         }
         return loadFragment(fragment);
+    }
+
+    private boolean loadFragment(Fragment fragment){
+        if(fragment != null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container,fragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 }

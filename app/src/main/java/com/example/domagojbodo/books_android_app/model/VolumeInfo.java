@@ -159,10 +159,4 @@ public class VolumeInfo {
     public void setCanonicalVolumeLink(String canonicalVolumeLink) {
         this.canonicalVolumeLink = canonicalVolumeLink;
     }
-
-    @NonNull
-    @Override
-    public String toString(){
-        return "naslov knjige: " + title + "\n" + "- author:" + authors;
-    }
 }
