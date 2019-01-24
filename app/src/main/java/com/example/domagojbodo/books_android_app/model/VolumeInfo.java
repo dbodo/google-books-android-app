@@ -3,7 +3,8 @@ package com.example.domagojbodo.books_android_app.model;
 import android.support.annotation.NonNull;
 
 import java.util.List;
-
+//Implementirati parcelable interface: https://developer.android.com/reference/android/os/Parcelable
+//http://www.vogella.com/tutorials/AndroidParcelable/article.html
 public class VolumeInfo {
 
     private String title;
