@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#7b4bff</color>
-    <color name="colorPrimaryDark">#6539ba</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="bgBottomNavigation">#fe485a</color>
+    <color name="colorPrimary">#B00020</color>
+    <color name="colorPrimaryDark">#3E1000</color>
+    <color name="bgBottomNavigation">#B00020</color>
+    <color name="background">#E3D2BC</color>
+    <color name="backgroundItem">#FFF8DE</color>
+    <color name="navigationButtons">#FFF8DE</color>
+    <color name="colorAccent">#B00020</color>
+    <color name="textColor">#000000</color>
+    <color name="subtextColor">#181818</color>
+
+    <!--Bookstore warm
+    <color name="colorPrimary">#5A1A05</color>
+    <color name="colorPrimaryDark">#5A1A05</color>
+    <color name="bgBottomNavigation">#5A1A05</color>
+    <color name="background">#FFF2C1</color>
+    <color name="backgroundItem">#FFF8DE</color>
+    <color name="navigationButtons">#FFF8DE</color>
+    <color name="colorAccent">#20262B</color>
+    -->
 </resources>

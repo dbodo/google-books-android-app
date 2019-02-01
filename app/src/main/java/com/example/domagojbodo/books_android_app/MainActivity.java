@@ -1,5 +1,6 @@
 package com.example.domagojbodo.books_android_app;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,8 +12,13 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
+import com.example.domagojbodo.books_android_app.adapter.BookshelfAdapter;
+import com.example.domagojbodo.books_android_app.database.Book;
+import com.example.domagojbodo.books_android_app.database.DatabaseClient;
 import com.example.domagojbodo.books_android_app.fragments.BookshelfFragment;
 import com.example.domagojbodo.books_android_app.fragments.HomeFragment;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private ActionBar toolbar;

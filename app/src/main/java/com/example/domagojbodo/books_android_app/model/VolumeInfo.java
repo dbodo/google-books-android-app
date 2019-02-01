@@ -1,19 +1,22 @@
 package com.example.domagojbodo.books_android_app.model;
 
 import android.support.annotation.NonNull;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 //Implementirati parcelable interface: https://developer.android.com/reference/android/os/Parcelable
 //http://www.vogella.com/tutorials/AndroidParcelable/article.html
-public class VolumeInfo {
-
+public class VolumeInfo implements Parcelable{
     private String title;
     private String subtitle;
     private List<String> authors = null;
     private String publisher;
     private String publishedDate;
+    private String description;
     private Integer pageCount;
-    private Integer printedPageCount;
     private String printType;
     private List<String> categories = null;
     private String contentVersion;
@@ -23,23 +26,39 @@ public class VolumeInfo {
     private String infoLink;
     private String canonicalVolumeLink;
 
-    public VolumeInfo(String title, String subtitle, List<String> authors, String publisher, String publishedDate, Integer pageCount, Integer printedPageCount, String printType, List<String> categories, String contentVersion, ImageLinks imageLinks, String language, String previewLink, String infoLink, String canonicalVolumeLink) {
-        this.title = title;
-        this.subtitle = subtitle;
-        this.authors = authors;
-        this.publisher = publisher;
-        this.publishedDate = publishedDate;
-        this.pageCount = pageCount;
-        this.printedPageCount = printedPageCount;
-        this.printType = printType;
-        this.categories = categories;
-        this.contentVersion = contentVersion;
-        this.imageLinks = imageLinks;
-        this.language = language;
-        this.previewLink = previewLink;
-        this.infoLink = infoLink;
-        this.canonicalVolumeLink = canonicalVolumeLink;
+    public VolumeInfo(Parcel in) {
+        title = in.readString();
+        subtitle = in.readString();
+        authors = in.createStringArrayList();
+        publisher = in.readString();
+        publishedDate = in.readString();
+        description = in.readString();
+        if (in.readByte() == 0) {
+            pageCount = null;
+        } else {
+            pageCount = in.readInt();
+        }
+        printType = in.readString();
+        categories = in.createStringArrayList();
+        contentVersion = in.readString();
+        imageLinks = in.readParcelable(ImageLinks.class.getClassLoader());
+        language = in.readString();
+        previewLink = in.readString();
+        infoLink = in.readString();
+        canonicalVolumeLink = in.readString();
     }
+
+    public static final Creator<VolumeInfo> CREATOR = new Creator<VolumeInfo>() {
+        @Override
+        public VolumeInfo createFromParcel(Parcel in) {
+            return new VolumeInfo(in);
+        }
+
+        @Override
+        public VolumeInfo[] newArray(int size) {
+            return new VolumeInfo[size];
+        }
+    };
 
     public String getTitle() {
         return title;
@@ -81,20 +100,20 @@ public class VolumeInfo {
         this.publishedDate = publishedDate;
     }
 
+    public String getDescription(){
+        return description;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
     public Integer getPageCount() {
         return pageCount;
     }
 
     public void setPageCount(Integer pageCount) {
         this.pageCount = pageCount;
-    }
-
-    public Integer getPrintedPageCount() {
-        return printedPageCount;
-    }
-
-    public void setPrintedPageCount(Integer printedPageCount) {
-        this.printedPageCount = printedPageCount;
     }
 
     public String getPrintType() {
@@ -159,5 +178,34 @@ public class VolumeInfo {
 
     public void setCanonicalVolumeLink(String canonicalVolumeLink) {
         this.canonicalVolumeLink = canonicalVolumeLink;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(title);
+        parcel.writeString(subtitle);
+        parcel.writeStringList(authors);
+        parcel.writeString(publisher);
+        parcel.writeString(publishedDate);
+        parcel.writeString(description);
+        if (pageCount == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(pageCount);
+        }
+        parcel.writeString(printType);
+        parcel.writeStringList(categories);
+        parcel.writeString(contentVersion);
+        parcel.writeParcelable(imageLinks, i);
+        parcel.writeString(language);
+        parcel.writeString(previewLink);
+        parcel.writeString(infoLink);
+        parcel.writeString(canonicalVolumeLink);
     }
 }

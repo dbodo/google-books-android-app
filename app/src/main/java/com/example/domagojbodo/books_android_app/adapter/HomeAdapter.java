@@ -8,17 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.domagojbodo.books_android_app.BookActivity;
 import com.example.domagojbodo.books_android_app.R;
-import com.example.domagojbodo.books_android_app.listeners.HomeListener;
 import com.example.domagojbodo.books_android_app.model.BookItems;
-import com.example.domagojbodo.books_android_app.model.VolumeInfo;
 
 import java.util.List;
 
@@ -61,11 +57,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         public void onClick(View v) {
             int position = getAdapterPosition();
 
-            if (position< bookItems.size()){
+            if (position < bookItems.size()){
                 BookItems clickedItem = bookItems.get(position);
 
                 Intent intent = new Intent(context, BookActivity.class);
-                intent.putExtra(BookActivity.EXTRA_BOOK_INFO,clickedItem);
+                intent.putExtra(BookActivity.GLOBAL_VAR_VALUE, false);
+                intent.putExtra(BookActivity.EXTRA_BOOK_INFO_API, clickedItem);
                 context.startActivity(intent);
             }
 
@@ -75,15 +72,37 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final BookItems book = bookItems.get(position);
-        StringBuilder builder = new StringBuilder();
-        for(String value : book.getVolumeInfo().getAuthors()){
-            builder.append(value + " ");
-        }
         holder.title.setText(String.valueOf(book.getVolumeInfo().getTitle()));
-        holder.author.setText(String.valueOf(builder));
-
-        Glide.with(context)
-                .load(book.getVolumeInfo().getImageLinks().getSmallThumbnail())
-                .into(holder.thumbnail);
+        if(book.getVolumeInfo().getAuthors() != null){
+            StringBuilder builder = new StringBuilder();
+            String prefix = "";
+            for(String value : book.getVolumeInfo().getAuthors()){
+                builder.append(prefix);
+                prefix = ",";
+                builder.append(value);
+            }
+            holder.author.setText(String.valueOf(builder));
+        }
+        else{
+            holder.author.setText("No authors found");
+        }
+        if(book.getVolumeInfo().getImageLinks()!=null)
+        {
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.no_cover);
+            requestOptions.fallback(R.drawable.no_cover);
+            requestOptions.error(R.drawable.no_cover);
+            Glide.with(context)
+                    .setDefaultRequestOptions(requestOptions)
+                    .load(book.getVolumeInfo().getImageLinks().getSmallThumbnail())
+                    .into(holder.thumbnail);
+        }
+        else
+        {
+            Glide.with(context)
+                    .load(R.drawable.no_cover)
+                    .into(holder.thumbnail);
+        }
     }
 }
+

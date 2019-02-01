@@ -4,4 +4,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Bookshelf</string>
     <string name="title_notifications">Notifications</string>
+    <string name="authors">Authors: </string>
+    <string name="publisher">Publisher: </string>
+    <string name="published_date">Published date: </string>
+    <string name="no_pages">Number of pages: </string>
+    <string name="summary">Summary: </string>
+    <string name="cover">Book cover: </string>
 </resources>

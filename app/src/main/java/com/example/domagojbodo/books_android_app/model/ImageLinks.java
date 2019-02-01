@@ -1,12 +1,29 @@
 package com.example.domagojbodo.books_android_app.model;
 
-public class ImageLinks {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+public class ImageLinks implements Parcelable {
     private String smallThumbnail;
     private String thumbnail;
-    private String small;
-    private String medium;
-    private String large;
-    private String extraLarge;
+
+    public ImageLinks(Parcel in) {
+        smallThumbnail = in.readString();
+        thumbnail = in.readString();
+    }
+
+    public static final Creator<ImageLinks> CREATOR = new Creator<ImageLinks>() {
+        @Override
+        public ImageLinks createFromParcel(Parcel in) {
+            return new ImageLinks(in);
+        }
+
+        @Override
+        public ImageLinks[] newArray(int size) {
+            return new ImageLinks[size];
+        }
+    };
 
     public String getSmallThumbnail() {
         return smallThumbnail;
@@ -24,37 +41,14 @@ public class ImageLinks {
         this.thumbnail = thumbnail;
     }
 
-    public String getSmall() {
-        return small;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setSmall(String small) {
-        this.small = small;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(smallThumbnail);
+        parcel.writeString(thumbnail);
     }
-
-    public String getMedium() {
-        return medium;
-    }
-
-    public void setMedium(String medium) {
-        this.medium = medium;
-    }
-
-    public String getLarge() {
-        return large;
-    }
-
-    public void setLarge(String large) {
-        this.large = large;
-    }
-
-    public String getExtraLarge() {
-        return extraLarge;
-    }
-
-    public void setExtraLarge(String extraLarge) {
-        this.extraLarge = extraLarge;
-    }
-
-
 }

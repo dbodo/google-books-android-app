@@ -1,21 +1,35 @@
 package com.example.domagojbodo.books_android_app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-public class BookItems {
+public class BookItems implements Parcelable {
     private String kind;
     private String id;
     private String etag;
     private String selfLink;
     private VolumeInfo volumeInfo;
 
-    public BookItems(String kind, String id, String etag, String selfLink, VolumeInfo volumeInfo) {
-        this.kind = kind;
-        this.id = id;
-        this.etag = etag;
-        this.selfLink = selfLink;
-        this.volumeInfo = volumeInfo;
+    public BookItems(Parcel in) {
+        kind = in.readString();
+        id = in.readString();
+        etag = in.readString();
+        selfLink = in.readString();
+        volumeInfo = in.readParcelable(VolumeInfo.class.getClassLoader());
     }
+
+    public static final Creator<BookItems> CREATOR = new Creator<BookItems>() {
+        @Override
+        public BookItems createFromParcel(Parcel in) {
+            return new BookItems(in);
+        }
+
+        @Override
+        public BookItems[] newArray(int size) {
+            return new BookItems[size];
+        }
+    };
 
     public String getKind() {
         return kind;
@@ -61,5 +75,19 @@ public class BookItems {
     @Override
     public String toString(){
         return "\n" + getVolumeInfo();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(kind);
+        parcel.writeString(id);
+        parcel.writeString(etag);
+        parcel.writeString(selfLink);
+        parcel.writeParcelable(volumeInfo, i);
     }
 }
